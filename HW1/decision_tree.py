@@ -69,19 +69,17 @@ for row in (db):
 # Y =
 class_result = {
    'No' : 0,
-   'Yes' :1,
+   'Yes': 1,
 }
-for rows in db:
-  tmp = [
-     class_result[row[4]]
-  ]
-  Y.append(tmp)
+for row in db:
+     Y.append(class_result[row[4]])
+  
 
 #fitting the decision tree to the data using entropy as your impurity measure
 #--> addd your Python code here
-clf = tree.DecisionTreeClassifier(criterion= "entropy")
+clf = tree.DecisionTreeClassifier(criterion="entropy")
 clf = clf.fit(X,Y)
 
 #plotting the decision tree
-tree.plot_tree(clf, feature_names=['Age', 'Spectacle', 'Astigmatism', 'Tear'], class_names=['Yes','No'], filled=True, rounded=True)
+tree.plot_tree(clf, feature_names=['Age','Spectacle','Astigmatism','Tear'], class_names=['No','Yes'], filled=True, rounded=True)
 plt.show()
