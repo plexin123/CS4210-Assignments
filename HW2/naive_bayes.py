@@ -1,6 +1,6 @@
 #-------------------------------------------------------------------------
-# AUTHOR: your name
-# FILENAME: title of the source file
+# AUTHOR: Paul Puma
+# FILENAME: naive_bayes.py
 # SPECIFICATION: description of the program
 # FOR: CS 4210- Assignment #2
 # TIME SPENT: how long it took you to complete the assignment
@@ -56,25 +56,24 @@ print("Day".ljust(15) + "Outlook".ljust(15) + "Temperature".ljust(15) +
 
 reverse_clas = {1: 'Yes', 0: 'No'}
 for row in dbTest:
-    # Transform test instance to numbers
+
     test_instance = [[
         outlook[row[1]],
         temperature[row[2]],
         humidity[row[3]],
         wind[row[4]]
     ]]
-    
-    # Get probability predictions: clf.predict_proba returns [[prob_class0, prob_class1]]
+    # returning an array with one row
     probabilities = clf.predict_proba(test_instance)[0]
     
-    # Get the predicted class
+    # return the actual predicted answer
     prediction = clf.predict(test_instance)[0]
     predicted_class = reverse_clas[prediction]
     
-    # Get confidence (maximum probability)
+    # take highest one
     confidence = max(probabilities)
     
-    # Only print if confidence >= 0.75
+
     if confidence >= 0.75:
         print(f"{row[0]:<15}{row[1]:<15}{row[2]:<15}{row[3]:<15}{row[4]:<15}"
               f"{predicted_class:<15}{confidence:.4f}")
