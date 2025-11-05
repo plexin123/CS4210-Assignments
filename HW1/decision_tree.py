@@ -83,3 +83,10 @@ clf = clf.fit(X,Y)
 #plotting the decision tree
 tree.plot_tree(clf, feature_names=['Age','Spectacle','Astigmatism','Tear'], class_names=['No','Yes'], filled=True, rounded=True)
 plt.show()
+
+print(f"Dataset loaded: {len(db)} examples")
+print(f"Features (X): {len(X)} examples with {len(X[0])} features each")
+print(f"Labels (Y): {len(Y)} labels")
+print(f"Tree depth: {clf.tree_.max_depth}")
+print(f"Number of leaf nodes: {clf.tree_.n_leaves}")
+print(f"Training accuracy: {clf.score(X, Y):.1%}")
